@@ -14,8 +14,8 @@ func (ipa IPAddr) String() (string){
 } 
 
 
-//func ipstringer() {
-func main() {
+func ipstringer() {
+// func main() {
 	hosts := map[string]IPAddr{
 		"loopback":  {127, 0, 0, 1},
 		"googleDNS": {8, 8, 8, 8},
