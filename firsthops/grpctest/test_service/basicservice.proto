@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package test_service;
+
+service ServerChecker {
+
+    rpc GetServerInfo (InfoRequest) returns (InfoList){
+
+    }
+}
+
+message InfoRequest {
+    string userName = 1;
+}
+
+message InfoList {
+    string osName = 1;
+    string osLocale = 2;
+    string localTime = 3;
+}
