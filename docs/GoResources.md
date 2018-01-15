@@ -23,3 +23,8 @@ If you are already familliar with code programming, going first through the reso
 
 - [The reference](https://golang.org/pkg/net/http/) on golang website
 - [A good recap](http://www.alexedwards.net/blog/a-recap-of-request-handling) of request handling
+
+## Questions and answers
+
+Some resources that gather Q&A about go. Always good to stay refresh his mind
+- 30 rather easy [questions](http://www.golangpro.com/2015/08/golang-interview-questions-answers.html) 
