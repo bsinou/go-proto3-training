@@ -16,3 +16,10 @@ If you are already familliar with code programming, going first through the reso
 ### Unit tests
 
 - [5 Tips](https://medium.com/@matryer/5-simple-tips-and-tricks-for-writing-unit-tests-in-golang-619653f90742) to start with
+
+## REST services 
+
+### HTTP basics
+
+- [The reference](https://golang.org/pkg/net/http/) on golang website
+- [A good recap](http://www.alexedwards.net/blog/a-recap-of-request-handling) of request handling
