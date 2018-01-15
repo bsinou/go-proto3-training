@@ -11,3 +11,8 @@ If you are already familliar with code programming, going first through the reso
 ## Good resources
 - Rob Pike videos:
 
+## About testing 
+
+### Unit tests
+
+- [5 Tips](https://medium.com/@matryer/5-simple-tips-and-tricks-for-writing-unit-tests-in-golang-619653f90742) to start with

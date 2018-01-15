@@ -1,6 +1,6 @@
 /* Forked from http://www.re-cycledair.com/playing-with-go-channels-and-go-routines to play with channels and goroutines */
 
-package main
+package examples
 
 import (
 	"os"
