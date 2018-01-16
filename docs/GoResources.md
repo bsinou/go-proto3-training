@@ -7,6 +7,7 @@ If you are already familliar with code programming, going first through the reso
 - Important [code conventions](https://golang.org/doc/code.html)
 - The [specifications](https://golang.org/ref/spec): they are surprisingly easy to read.
 - [Effective Go](https://golang.org/doc/effective_go.html)
+- A list of [small examples](https://gobyexample.com): each article is covering a specific point
 
 ## Good resources
 - Rob Pike videos:
@@ -28,3 +29,4 @@ If you are already familliar with code programming, going first through the reso
 
 Some resources that gather Q&A about go. Always good to stay refresh his mind
 - 30 rather easy [questions](http://www.golangpro.com/2015/08/golang-interview-questions-answers.html) 
+- A [fun website](https://gophercises.com) with tutorial videos and exercices. 
