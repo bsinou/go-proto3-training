@@ -9,6 +9,11 @@ If you are already familliar with code programming, going first through the reso
 - [Effective Go](https://golang.org/doc/effective_go.html)
 - A list of [small examples](https://gobyexample.com): each article is covering a specific point
 
+
+### The basics, again and again:
+A selection of good articles that focuses on a specific feature of the Go language, with another point of view.
+- About [Mutexes](https://kylewbanks.com/blog/tutorial-synchronizing-state-with-mutexes-golang) 
+ 
 ## Good resources
 - Rob Pike videos:
 

@@ -1,4 +1,4 @@
-package exercices
+package simple
 
 import "fmt"
 
