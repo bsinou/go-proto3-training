@@ -1,10 +1,12 @@
 package main
 
 import (
+	"encoding/csv"
 	"flag"
 	"fmt"
 	"os"
-	"encoding/csv"
+	"strings"
+	"time"
 )
 
 var (
@@ -17,7 +19,9 @@ func main() {
 	
 	// Define known flags
 	csvFileName := flag.String("f", DefaultCsvFileName, "a csv file name where question and answer are defined, one per line separated with a coma")
-	timeLimitInSec := flag.Int("t", DefaultTimeLimit, "the time limit in seconds")
+	timeLimitInS := flag.Int("t", DefaultTimeLimit, "the time limit in seconds")
+	
+	// timeLimitInSec := flag.Duration("t", DefaultTimeLimit, "the time limit in seconds")
 	
 	// Parse the flags
 	flag.Parse()
@@ -36,8 +40,12 @@ func main() {
 	// We now have a slice of question and answers
 	currProblems := parseLines(lines)
 	
-	quizz := Quizz{timeLimit: *timeLimitInSec, problems: currProblems}
-	quizz.Perform()
+	maxDuration := time.Duration(*timeLimitInS * 1000000 * 1000) 
+	
+	// fmt.Printf("Input time limit:  %d ->  %v\n", *timeLimitInS, maxDuration)
+
+	quizz := Quizz{timeLimit: maxDuration, problems: currProblems}
+	quizz.Launch()
 }
 
 func parseLines(lines [][]string) ([]Problem) {
@@ -45,7 +53,7 @@ func parseLines(lines [][]string) ([]Problem) {
 	var problems = make ([]Problem, len(lines))
 	for i, line := range lines {
 		// fmt.Printf("Line %d: question = %s, answer = %s\n", i, line[0], line[1])
-		problems[i] = Problem{q: line[0], a: line[1]}
+		problems[i] = Problem{q: line[0], a: strings.TrimSpace(line[1])}
 	}	
 	return problems
 }
