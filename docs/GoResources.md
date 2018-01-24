@@ -1,5 +1,10 @@
 # Resources for the Go Language
 
+## Cool tips 
+
+- to start a server that loccally expose the documentation of all libraries that are on the local machine, simply run:
+ `godoc -http :6060` (or whatever free port)
+
 ## Baby steps
 
 If you are already familliar with code programming, going first through the resources listed below in that order is a good way to be quickly up and running in GO: 
