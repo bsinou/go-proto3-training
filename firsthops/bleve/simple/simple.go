@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/blevesearch/bleve"
+	"github.com/blevesearch/bleve/search/query"
 )
 
 const (
@@ -18,6 +19,7 @@ var (
 		{"Bruno", "Sinou"},
 		{"John", "Doo"},
 		{"Jackie", "Chan"},
+		{"Jackie", "Chan Jr."},
 		{"Jackie", "Meetoo"},
 		{"John", "Difool"},
 	}
@@ -46,9 +48,72 @@ func testSearches() {
 	simpleNoResultSearch(index)
 	simpleTwoResultSearch(index)
 	simpleDNameSearch(index)
+	advancedDNameSearch(index)
+}
+
+// Various search patterns
+
+func simpleNoResultSearch(index bleve.Index) {
+	query := bleve.NewTermQuery("John") // query string terms must be lower case
+	request := bleve.NewSearchRequest(query)
+	result, err := index.Search(request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("simpleNoResultSearch: " + result.String())
+}
+
+func simpleTwoResultSearch(index bleve.Index) {
+	query := bleve.NewTermQuery("john")
+	request := bleve.NewSearchRequest(query)
+	result, err := index.Search(request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("simpleTwoResultSearch: " + result.String())
+}
+
+func simpleDNameSearch(index bleve.Index) {
+	query := bleve.NewTermQuery("difool")
+	request := prepareRequest(query)
+	result, err := index.Search(request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("simpleDNameSearch: " + result.String())
+}
+
+func advancedDNameSearch(index bleve.Index) {
+	phrase := []string{"jackie", "chan"}
+	query := bleve.NewPhraseQuery(phrase, "displayname")
+	request := prepareRequest(query)
+	result, err := index.Search(request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("advancedDNameSearch: " + result.String())
 }
 
 // Local helpers
+func prepareRequest(query query.Query) *bleve.SearchRequest {
+	request := bleve.NewSearchRequest(query)
+	request.Highlight = bleve.NewHighlightWithStyle("html")
+	request.Fields = []string{"firstname", "lastname", "displayname"}
+	return request
+}
+
+func cleanLegacy() {
+	os.RemoveAll(dbPath)
+}
+
+func newPerson(fname, lname string) Person {
+	dname := fname + " " + lname
+	return Person{
+		FirstName:   fname,
+		LastName:    lname,
+		DisplayName: dname,
+	}
+}
 
 func createIndex() {
 
@@ -75,49 +140,4 @@ func createIndex() {
 
 	fmt.Println("Index created, documents indexed")
 	index.Close()
-}
-
-func simpleNoResultSearch(index bleve.Index) {
-	query := bleve.NewTermQuery("John") // query string terms must be lower case
-	request := bleve.NewSearchRequest(query)
-	result, err := index.Search(request)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("simpleNoResultSearch: " + result.String())
-}
-
-func simpleTwoResultSearch(index bleve.Index) {
-	query := bleve.NewTermQuery("john")
-	request := bleve.NewSearchRequest(query)
-	result, err := index.Search(request)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("simpleTwoResultSearch: " + result.String())
-}
-
-func simpleDNameSearch(index bleve.Index) {
-	query := bleve.NewTermQuery("difool")
-	request := bleve.NewSearchRequest(query)
-	request.Highlight = bleve.NewHighlightWithStyle("html")
-	request.Fields = []string{"firstname", "lastname", "displayname"}
-	result, err := index.Search(request)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("simpleDNameSearch: " + result.String())
-}
-
-func cleanLegacy() {
-	os.RemoveAll(dbPath)
-}
-
-func newPerson(fname, lname string) Person {
-	dname := fname + " " + lname
-	return Person{
-		FirstName:   fname,
-		LastName:    lname,
-		DisplayName: dname,
-	}
 }
