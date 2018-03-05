@@ -11,13 +11,24 @@
 
 On CentOs:
 
-- download the arm64 archive
-- untar and move to `/usr/local/go1.9.4` (FI)
-- update the symbolic `link /usr/local/go`
+- download the arm64 archive from [GoLang website](https://golang.org/dl/)
+- untar and move to `/usr/local/go1.10` (FI)
+- update the symbolic link `/usr/local/go`:
+
+```
+ cd /usr/local
+ sudo rm go
+ sudo ln -s go1.10 go
+```
+
 - to ease plugin install, make the `/usr/local/go/bin` subfolder writable for all users
 
-## Baby steps
+```
+ sudo chmod -R a+rw go/bin
+```
 
+## Baby steps
+	
 If you are already familliar with code programming, going first through the resources listed below in that order is a good way to be quickly up and running in GO:
 
 - A [first tour](https://tour.golang.org/list) of Go
