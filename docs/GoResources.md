@@ -9,26 +9,39 @@
 
 ### Upgrading go
 
-On CentOs:
+On **CentOs 7**:
 
-- download the arm64 archive from [GoLang website](https://golang.org/dl/)
-- untar and move to `/usr/local/go1.10` (FI)
-- update the symbolic link `/usr/local/go`:
+- Download the arm64 archive from [GoLang website](https://golang.org/dl/)
+- Untar and move to `/usr/local/go1.10` (FI)
+- Update the symbolic link `/usr/local/go`:
 
-```
+```bash
  cd /usr/local
  sudo rm go
  sudo ln -s go1.10 go
 ```
 
-- to ease plugin install, make the `/usr/local/go/bin` subfolder writable for all users
+**Note:** to ease plugin install, make the `/usr/local/go/bin` subfolder writable for all users
 
-```
+```bash
  sudo chmod -R a+rw go/bin
 ```
 
+### Post Upgrade Tasks
+
+#### Visual Code IDE
+
+To insure Visual Code IDE is up to date, restart the workstation, and start the IDE. You should accept "All Plugin" installation and also recpompile suggested plugins
+
+#### Protobuf
+
+Protobuf is installed in the bin subfolder of the `/usr/local/go` folder, it must thus be reinstalled after update
+
+
+
+
 ## Baby steps
-	
+
 If you are already familliar with code programming, going first through the resources listed below in that order is a good way to be quickly up and running in GO:
 
 - A [first tour](https://tour.golang.org/list) of Go
@@ -65,4 +78,4 @@ A selection of good articles that focuses on a specific feature of the Go langua
 Some resources that gather Q&A about go. Always good to stay refresh his mind
 
 - 30 rather easy [questions](http://www.golangpro.com/2015/08/golang-interview-questions-answers.html) 
-- A [fun website](https://gophercises.com) with tutorial videos and exercices. 
+- A [fun website](https://gophercises.com) with tutorial videos and exercices
