@@ -31,14 +31,11 @@ On **CentOs 7**:
 
 #### Visual Code IDE
 
-To insure Visual Code IDE is up to date, restart the workstation, and start the IDE. You should accept "All Plugin" installation and also recpompile suggested plugins
+To insure Visual Code IDE is up to date, restart the workstation, and start the IDE. You should accept "All Plugin" installation and also recompile suggested plugins
 
 #### Protobuf
 
 Protobuf is installed in the bin subfolder of the `/usr/local/go` folder, it must thus be reinstalled after update
-
-
-
 
 ## Baby steps
 
@@ -75,7 +72,7 @@ A selection of good articles that focuses on a specific feature of the Go langua
 
 ## Questions and answers
 
-Some resources that gather Q&A about go. Always good to stay refresh his mind
+Some resources that gather Q&A about go. Always good to refresh  one's mind
 
 - 30 rather easy [questions](http://www.golangpro.com/2015/08/golang-interview-questions-answers.html) 
 - A [fun website](https://gophercises.com) with tutorial videos and exercices
